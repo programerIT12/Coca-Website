@@ -1,16 +1,8 @@
 {
-  "extends": [
-    "stylelint-config-standard-scss"
-  ],
-  "plugins": [
-    "stylelint-order"
-  ],
+  "extends": ["stylelint-config-standard-scss"],
+  "plugins": ["stylelint-order"],
   "customSyntax": "postcss-scss",
-  "ignoreFiles": [
-    "dist/**/*.css",
-    "node_modules/**/*.css",
-    "build/**/*.css"
-  ],
+  "ignoreFiles": ["dist/**/*.css", "node_modules/**/*.css", "build/**/*.css"],
   "rules": {
     "order/properties-order": [
       [
@@ -221,9 +213,7 @@
     "declaration-block-no-duplicate-properties": [
       true,
       {
-        "ignore": [
-          "consecutive-duplicates-with-different-values"
-        ]
+        "ignore": ["consecutive-duplicates-with-different-values"]
       }
     ],
     "declaration-block-no-shorthand-property-overrides": true,
@@ -261,10 +251,7 @@
     "selector-no-qualifying-type": [
       true,
       {
-        "ignore": [
-          "attribute",
-          "class"
-        ]
+        "ignore": ["attribute", "class"]
       }
     ],
     "selector-no-vendor-prefix": true,
@@ -288,13 +275,8 @@
     "at-rule-empty-line-before": [
       "always",
       {
-        "except": [
-          "blockless-after-same-name-blockless",
-          "first-nested"
-        ],
-        "ignore": [
-          "after-comment"
-        ]
+        "except": ["blockless-after-same-name-blockless", "first-nested"],
+        "ignore": ["after-comment"]
       }
     ],
     "at-rule-name-case": "lower",
@@ -305,12 +287,8 @@
     "comment-empty-line-before": [
       "always",
       {
-        "except": [
-          "first-nested"
-        ],
-        "ignore": [
-          "stylelint-commands"
-        ]
+        "except": ["first-nested"],
+        "ignore": ["stylelint-commands"]
       }
     ],
     "comment-whitespace-inside": "always",
@@ -332,12 +310,8 @@
     "rule-empty-line-before": [
       "always-multi-line",
       {
-        "except": [
-          "first-nested"
-        ],
-        "ignore": [
-          "after-comment"
-        ]
+        "except": ["first-nested"],
+        "ignore": ["after-comment"]
       }
     ],
     "scss/at-else-closing-brace-newline-after": "always-last-in-chain",
@@ -361,11 +335,7 @@
     "scss/dollar-variable-empty-line-before": [
       "always",
       {
-        "except": [
-          "first-nested",
-          "after-comment",
-          "after-dollar-variable"
-        ]
+        "except": ["first-nested", "after-comment", "after-dollar-variable"]
       }
     ],
     "scss/dollar-variable-no-missing-interpolation": true,
@@ -373,13 +343,8 @@
     "scss/double-slash-comment-empty-line-before": [
       "always",
       {
-        "except": [
-          "first-nested"
-        ],
-        "ignore": [
-          "between-comments",
-          "stylelint-commands"
-        ]
+        "except": ["first-nested"],
+        "ignore": ["between-comments", "stylelint-commands"]
       }
     ],
     "scss/double-slash-comment-whitespace-inside": "always",
@@ -396,12 +361,8 @@
   },
   "overrides": [
     {
-      "files": [
-        "**/*.scss"
-      ],
+      "files": ["**/*.scss"],
       "customSyntax": "postcss-scss"
     }
   ]
 }
-
-
