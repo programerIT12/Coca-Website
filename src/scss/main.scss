@@ -1,0 +1,9 @@
+@import './mixins';
+
+header {
+  @include flex-column-all-centre;
+}
+
+.burger {
+  @include burger;
+}

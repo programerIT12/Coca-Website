@@ -1,0 +1,63 @@
+// Миксин бургер-меню.
+// Сама кнопка — средняя линия (background-color),
+// верхняя и нижняя линии — псевдоэлементы ::before и ::after.
+// По умолчанию скрыт, появляется с брейкпоинта tablet.
+// Класс .active превращает три линии в крестик.
+
+@mixin burger(
+  $width: 30px,
+  $line-height: 3px,
+  $gap: 8px,
+  $color: #1a1a1a,
+  $transition: 0.3s ease
+) {
+  position: relative;
+  display: none;
+  width: $width;
+  height: $line-height;
+  padding: 0;
+  border: none;
+  background-color: $color;
+  cursor: pointer;
+  transition: background-color $transition;
+
+  @include tablet {
+    display: block;
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: $line-height;
+    background-color: $color;
+    transition:
+      transform $transition,
+      top $transition,
+      opacity $transition;
+  }
+
+  &::before {
+    top: -$gap;
+  }
+
+  &::after {
+    top: $gap;
+  }
+
+  &.active {
+    background-color: transparent;
+
+    &::before {
+      top: 0;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+  }
+}
