@@ -2,7 +2,12 @@
   "extends": ["stylelint-config-standard-scss"],
   "plugins": ["stylelint-order"],
   "customSyntax": "postcss-scss",
-  "ignoreFiles": ["dist/**/*.css", "node_modules/**/*.css", "build/**/*.css"],
+  "ignoreFiles": [
+    "dist/**/*.css",
+    "node_modules/**/*.css",
+    "build/**/*.css",
+    "./src/scss/base/normalize.scss"
+  ],
   "rules": {
     "order/properties-order": [
       [
