@@ -1,1 +1,1 @@
-import '../scss/main.scss';
+import '../assests/scss/main.scss';
