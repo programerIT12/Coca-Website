@@ -1,4 +1,4 @@
-@import './normalize';
-@import './vars';
-@import './fonts';
-@import './main';
+@forward './normalize';
+@forward './vars';
+@forward './fonts';
+@forward './main';

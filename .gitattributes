@@ -1,0 +1,8 @@
+# LF в репозитории и в рабочей копии — иначе prettier ругается "Delete ␍"
+* text=auto eol=lf
+
+# бинарники не трогать
+*.woff2 binary
+*.png binary
+*.jpg binary
+*.svg text eol=lf
