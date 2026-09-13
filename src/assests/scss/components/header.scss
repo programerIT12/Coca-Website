@@ -1,6 +1,11 @@
 @use '../mixins' as *;
 
 .header {
+  position: fixed;
+  z-index: var(--z-index-3);
+  top: 0;
+  right: 0;
+  left: 0;
   padding: 26px 0 22px;
 
   @include mobile {
@@ -71,6 +76,7 @@
     background-color: var(--neutral-color-130);
     transform: translate(8px);
     transition: background-color var(--transition);
+    cursor: pointer;
 
     &::before {
       content: '';
