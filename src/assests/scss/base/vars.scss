@@ -1,3 +1,5 @@
+@use '../mixins' as *;
+
 :root {
   // neutral colors
   --neutral-color-10: #fff;
@@ -16,10 +18,16 @@
   // primary colors
   --primary-color-50: #4e7ddb;
 
+  //success colors
+  --success-color-70: #e2f8f0b3;
+
   // container
   --container-padding: 15px;
   --container-width: 1200px;
 
+  @include mobile {
+    --container-width: 480px;
+  }
   // transition
   --transition: 0.3s ease-in-out;
 
@@ -40,4 +48,7 @@
   // logo colors
   --logo-color-text: #fff;
   --logo-color-circle: #343542;
+
+  //success colors
+  --success-color-70: #e2f8f033;
 }

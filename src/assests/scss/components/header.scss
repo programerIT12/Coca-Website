@@ -1,11 +1,6 @@
 @use '../mixins' as *;
 
 .header {
-  position: fixed;
-  z-index: var(--z-index-3);
-  top: 0;
-  right: 0;
-  left: 0;
   padding: 26px 0 22px;
 
   @include mobile {
@@ -102,6 +97,11 @@
       line-height: 150%;
       text-align: center;
       color: #000;
+
+      @include small-tablet {
+        top: -28px;
+        font-size: 20px;
+      }
     }
 
     &-checkbox {
@@ -139,6 +139,11 @@
     position: relative;
     @include small-tablet {
       line-height: 300%;
+
+      @include small-tablet {
+        line-height: 200%;
+        font-size: 20px;
+      }
     }
     &::after {
       content: '';

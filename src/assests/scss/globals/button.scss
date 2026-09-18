@@ -1,9 +1,16 @@
+@use '../mixins' as *;
+
 .button {
   &-form {
     font-size: 16px;
     line-height: 150%;
     text-align: center;
     transition: opacity var(--transition);
+
+    @include mobile {
+      font-size: 14px;
+    }
+    
     &:hover {
       opacity: 0.9;
     }

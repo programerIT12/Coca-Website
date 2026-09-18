@@ -11,7 +11,9 @@ html {
 *::after {
   box-sizing: inherit;
 }
+
 .body {
+  position: relative;
   overflow-x: hidden;
   color: var(--neutral-color-100);
   background-color: var(--neutral-color-10);

@@ -1,25 +1,74 @@
 @use '../../mixins' as *;
 
 .hero {
-  padding-top: 201px;
+  position: relative;
+  padding: 87px 0 141px;
+
+  @include mini-desktop {
+    padding: 77px 0 121px;
+  }
+
+  @include mobile {
+    min-height: calc(100dvh);
+  }
+
+  &::before {
+    top: 50px;
+    left: 181px;
+    width: 551px;
+    height: 551px;
+    background: #fa7515;
+    opacity: 0.13;
+    filter: blur(220px);
+
+    @include mini-desktop {
+      left: 80px;
+      width: 351px;
+      height: 351px;
+      text-align: center;
+    }
+    @include small-tablet {
+      top: 20px;
+      left: 40px;
+      width: 251px;
+      height: 251px;
+    }
+  }
+
+  &::after {
+    bottom: 0px;
+    right: 0;
+    width: 525px;
+    height: 525px;
+    background: var(--success-color-70);
+    filter: blur(180px);
+
+    @include small-tablet {
+      width: 225px;
+      height: 225px;
+    }
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: var(--z-index-0);
+    display: inline-block;
+    border-radius: 100%;
+  }
 
   &__container {
-    @include flex-all-between;
+    @include flex-justify-between;
+    gap: 15px;
     position: relative;
+    align-items: flex-end;
+    flex-wrap: wrap;
 
-    &::before {
-      content: '';
-      position: absolute;
-      z-index: var(--z-index-0);
-      top: -50px;
-      left: -80px;
-      display: inline-block;
-      border-radius: 100%;
-      width: 551px;
-      height: 551px;
-      background: #fa7515;
-      opacity: 0.13;
-      filter: blur(220px);
+    @include mini-desktop {
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
     }
   }
 
@@ -34,6 +83,25 @@
     letter-spacing: -0.04em;
     color: var(--neutral-color-100);
     margin-bottom: 114px;
+
+    @include mini-desktop {
+      margin-bottom: 74px;
+    }
+
+    @include tablet {
+      font-size: 60px;
+      margin-bottom: 44px;
+    }
+
+    @include mobile {
+      font-size: 48px;
+      margin-bottom: 38px;
+    }
+
+    @include small-mobile {
+      font-size: 38px;
+      margin-bottom: 32px;
+    }
   }
   &__subtitle {
     margin-bottom: 69px;
@@ -41,6 +109,14 @@
   &__form {
     @include flex-align-centre;
     gap: 16px;
+
+    @include mini-desktop {
+      justify-content: center;
+    }
+    @include small-mobile {
+      flex-direction: column;
+      gap: 20px;
+    }
   }
   &__input {
     padding-bottom: 23px;
@@ -51,6 +127,14 @@
     line-height: 150%;
     color: var(--neutral-color-100);
     background-color: var(--neutral-color-10);
+
+    @include small-tablet {
+      padding-bottom: 13px;
+    }
+    @include mobile {
+      max-width: 180px;
+      min-width: 120px;
+    }
   }
 
   &__btn {
@@ -59,5 +143,163 @@
     padding: 16px 44px;
     color: var(--neutral-color-10);
     background-color: var(--neutral-color-100);
+
+    @include small-tablet {
+      padding: 12px 32px;
+    }
+  }
+
+  &__right {
+    position: relative;
+    margin-right: 20px;
+
+    @include mini-desktop {
+      display: none;
+    }
+  }
+
+  &__sales {
+    padding: 20px;
+    margin-bottom: 29px;
+    @include small-desktop {
+      max-width: 380px;
+    }
+    &-img {
+      @include small-desktop {
+        max-width: 280px;
+      }
+    }
+
+    &-title {
+      margin-bottom: 16px;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 150%;
+      letter-spacing: -0.03em;
+      color: #1d1e25;
+    }
+  }
+  &__customer {
+    position: absolute;
+    top: -60px;
+    right: -140px;
+    padding: 15px 18px;
+    display: inline-block;
+
+    @include small-desktop {
+      top: -140px;
+      right: -30px;
+    }
+
+    @include mini-desktop {
+      top: 0;
+      right: -200px;
+    }
+    &-title {
+      margin-bottom: 12px;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 188%;
+      letter-spacing: -0.03em;
+      color: #1d1e25;
+    }
+  }
+
+  &__sales,
+  &__customer {
+    transform: rotate(-0deg);
+    border-radius: 8px;
+    box-shadow: 20px 40px 80px 0 rgba(45, 51, 81, 0.12);
+    background: #fff;
+  }
+
+  &__stats {
+    padding: 20px 29px;
+    border-radius: 8px;
+    border-collapse: separate;
+    border-spacing: 0;
+    box-shadow: 20px 40px 80px 0 #2d33511f;
+    background: #000;
+    text-align: left;
+
+    &-head {
+      &-th {
+        padding: 0 60px 8px 0;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 143%;
+        color: #5c616f;
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+
+    &-body {
+      &-td {
+        padding: 0 60px 12px 0;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 130%;
+        color: #fff;
+
+        &:nth-child(1) {
+          padding-right: 80px;
+        }
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+
+      &-row:last-child &-td {
+        padding-bottom: 0;
+      }
+
+      &-num {
+        position: relative;
+        display: inline-block;
+        padding-left: 18px;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 130%;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 0;
+          width: 12px;
+          height: 12px;
+          background: center / contain no-repeat;
+          transform: translateY(-50%);
+        }
+
+        &--green {
+          color: #60d39c;
+
+          &::before {
+            background-image: url('../../../icons/green-arow-icon.svg');
+          }
+        }
+
+        &--red {
+          color: #e35454;
+
+          &::before {
+            background-image: url('../../../icons/red-arow-icon.svg');
+          }
+        }
+      }
+
+      &-text {
+        margin-left: 4px;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 150%;
+        color: #5c616f;
+      }
+    }
   }
 }
