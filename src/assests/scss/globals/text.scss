@@ -20,6 +20,10 @@
   &-h2 {
     font-size: 56px;
 
+    @include mini-desktop {
+      font-size: 50px;
+    }
+
     @include tablet {
       font-size: 46px;
     }

@@ -1,10 +1,6 @@
 {
-  "extends": [
-    "stylelint-config-standard-scss"
-  ],
-  "plugins": [
-    "stylelint-order"
-  ],
+  "extends": ["stylelint-config-standard-scss"],
+  "plugins": ["stylelint-order"],
   "ignoreFiles": [
     "dist/**",
     "build/**",
@@ -208,13 +204,7 @@
     "max-nesting-depth": [
       4,
       {
-        "ignoreAtRules": [
-          "media",
-          "supports",
-          "include",
-          "each",
-          "if"
-        ]
+        "ignoreAtRules": ["media", "supports", "include", "each", "if"]
       }
     ],
     "selector-max-id": 0,
@@ -222,10 +212,7 @@
     "selector-no-qualifying-type": [
       true,
       {
-        "ignore": [
-          "attribute",
-          "class"
-        ]
+        "ignore": ["attribute", "class"]
       }
     ],
     "no-descending-specificity": null,
