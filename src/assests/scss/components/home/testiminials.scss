@@ -1,0 +1,154 @@
+@use '../../mixins/' as *;
+
+.testimonials {
+  padding: 69px 0 160px;
+
+  @include mobile {
+    padding: 39px 0 70px;
+  }
+  &__head {
+    @include flex-all-between;
+    margin-bottom: 48px;
+
+    @include tablet {
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+    }
+
+    @include mobile {
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    max-width: 530px;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    color: var(--neutral-color-100);
+
+    @include tablet {
+      max-width: 450px;
+    }
+  }
+
+  &__descr {
+    font-weight: 500;
+    max-width: 376px;
+    color: var(--neutral-color-150);
+  }
+
+  &__rating {
+    @include flex-align-centre;
+    gap: 8px;
+    margin-bottom: 19px;
+
+    &-num {
+      font-weight: 500;
+      line-height: 163%;
+      color: var(--neutral-color-100);
+    }
+  }
+  &__slider-wrapper {
+    &::before {
+      content: '';
+      display: block;
+      width: 115px;
+      height: 77px;
+      margin-bottom: 24px;
+      transform: translateY(10px);
+      background: url('/assests/icons/quotes-icon.svg') no-repeat center /
+        contain;
+
+      @include mini-desktop {
+        transform: translateY(-5px);
+      }
+
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+  &__slider {
+    max-width: 898px;
+  }
+  &__comment {
+    &-text {
+      margin-bottom: 40px;
+      font-weight: 500;
+      font-size: 40px;
+      line-height: 130%;
+      letter-spacing: -0.03em;
+      color: var(--neutral-color-100);
+    }
+
+    &-author {
+      @include flex-align-centre;
+      gap: 24px;
+      font-style: normal;
+
+      &-avatar {
+        border-radius: 50%;
+        overflow: hidden;
+      }
+      &-name {
+        font-weight: 600;
+        line-height: 144%;
+        color: var(--neutral-color-100);
+      }
+
+      &-professions {
+        font-weight: 500;
+        line-height: 163%;
+        color: var(--neutral-color-150);
+      }
+    }
+  }
+  &__btns {
+    @include flex-align-centre;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 40px;
+    transform: translateY(-40px);
+
+    @include mini-desktop {
+      transform: translateY(5px);
+    }
+  }
+  &__btn {
+    @include flex-all-centre;
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border: 1px solid var(--neutral-color-40);
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    transition:
+      background-color var(--transition),
+      border-color var(--transition);
+
+    @include small-mobile {
+      width: 40px;
+      height: 40px;
+    }
+
+    & svg path {
+      transition: fill var(--transition);
+    }
+    &:hover {
+      background-color: var(--neutral-color-100);
+      border-color: var(--neutral-color-100);
+
+      & svg path {
+        fill: var(--neutral-color-10);
+      }
+    }
+
+    &--next {
+      transform: rotate(180deg);
+    }
+  }
+}
