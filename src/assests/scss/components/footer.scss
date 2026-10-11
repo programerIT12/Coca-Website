@@ -1,0 +1,271 @@
+@use './../mixins/' as *;
+.footer {
+  background-color: var(--black-bg-color);
+  padding: 112px 58px;
+  color: #fff;
+
+  @include mobile {
+    padding-top: 62px;
+  }
+
+  &__head {
+    @include flex-all-between;
+    margin-bottom: 134px;
+
+    @include tablet {
+      gap: 40px;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 84px;
+    }
+
+    @include mobile {
+      margin-bottom: 64px;
+      align-items: center;
+      text-align: center;
+    }
+
+    @include small-mobile {
+      margin-bottom: 44px;
+    }
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 64px;
+    line-height: 120%;
+    margin-bottom: 24px;
+
+    @include tablet {
+      font-size: 54px;
+    }
+
+    @include mobile {
+      font-size: 42px;
+    }
+  }
+
+  &__descr {
+    max-width: 543px;
+    font-weight: 500;
+    line-height: 178%;
+    color: var(--neutral-color-50);
+  }
+
+  &__link {
+    border-radius: 100px;
+    padding: 16px 32px;
+    color: var(--black-bg-color);
+    background-color: #fff;
+  }
+  &__body {
+    @include flex-all-between;
+    margin-bottom: 56px;
+
+    @include tablet {
+      flex-direction: column;
+      align-items: start;
+      gap: 40px;
+    }
+
+    @include mobile {
+      flex-direction: column-reverse;
+    }
+
+    &-info {
+      @include tablet {
+        @include flex-align-centre;
+        gap: 30px;
+      }
+
+      @include small-tablet {
+        gap: 10px;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    &-descr {
+      font-weight: 500;
+      line-height: 162%;
+      color: var(--neutral-color-150);
+      max-width: 292px;
+      @include tablet {
+        max-width: 500px;
+      }
+    }
+  }
+
+  &__logo {
+    margin-bottom: 15px;
+    display: inline-block;
+
+    @include tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__naw {
+    @include tablet {
+      width: 100%;
+    }
+  }
+  &__list {
+    display: flex;
+    gap: 93px;
+
+    @include mini-desktop {
+      gap: 36px;
+      justify-content: center;
+    }
+
+    @include tablet {
+      justify-content: space-between;
+    }
+
+    @include mobile {
+      gap: 40px 60px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    @include small-mobile {
+      text-align: center;
+    }
+  }
+
+  &__item {
+    &-title {
+      margin-bottom: 24px;
+      font-weight: 700;
+      line-height: 150%;
+    }
+
+    @include mobile {
+      min-width: 143px;
+    }
+  }
+  &__subitem {
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+    &-link {
+      position: relative;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 150%;
+      color: var(--neutral-color-150);
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        right: 0;
+        left: 0;
+        height: 1px;
+        background-color: var(--neutral-color-150);
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity var(--transition),
+          visibility var(--transition);
+      }
+      &:hover {
+        &::after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    @include flex-all-between;
+    padding-top: 40px;
+    border-top: 1px solid var(--neutral-color-70);
+    flex-wrap: wrap;
+    gap: 20px 40px;
+
+    @include tablet {
+      justify-content: center;
+    }
+
+    &-lists {
+      @include flex-align-centre;
+      gap: 72px;
+
+      @include tablet {
+        gap: 42px;
+      }
+      @include mobile {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+    &-list {
+      display: flex;
+      gap: 40px;
+
+      @include tablet {
+        gap: 20px;
+      }
+
+      @include small-mobile {
+        gap: 10px 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    &-link {
+      position: relative;
+      font-weight: 500;
+      line-height: 143%;
+      color: #fff;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        right: 0;
+        left: 0;
+        height: 1px;
+        background-color: #fff;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity var(--transition),
+          visibility var(--transition);
+      }
+      &:hover {
+        &::after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  }
+  &__social {
+    &-list {
+      @include flex-all-centre;
+      gap: 24px;
+
+      @include tablet {
+        gap: 18px;
+      }
+    }
+
+    &-link {
+      transition: opacity var(--transition);
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  &__copyright {
+    font-weight: 500;
+    line-height: 143%;
+    color: #fff;
+  }
+}

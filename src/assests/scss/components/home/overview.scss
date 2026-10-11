@@ -1,6 +1,6 @@
 @use '../../mixins/' as *;
 .overview {
-  background-color: var(--overview-bg-color);
+  background-color: var(--black-bg-color);
   padding: 100px 0;
 
   @include tablet {
