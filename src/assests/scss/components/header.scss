@@ -96,7 +96,7 @@
       font-weight: 600;
       line-height: 150%;
       text-align: center;
-      color: #000;
+      color: var(--neutral-color-140);
 
       @include small-tablet {
         top: -28px;
