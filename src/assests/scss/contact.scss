@@ -1,0 +1,8 @@
+@use './base';
+@use './globals';
+
+// components
+@use './components/header';
+@use './components/contact/hero';
+@use './components/partners';
+@use './components/footer';
