@@ -5,12 +5,12 @@ import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 
 export default defineConfig({
   root: './src',
-  base: '/coca/',
+  base: '/Coca-/',
   server: {
     port: 3000,
     open: true,
   },
-  publicDir: '/.src/assests',
+  publicDir: false,
   build: {
     outDir: '../dist',
     emptyOutDir: true,
