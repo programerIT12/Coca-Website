@@ -12,8 +12,6 @@
     min-height: calc(100dvh - 109px);
   }
 
-
-
   &__container {
     @include flex-justify-between;
     gap: 15px;
@@ -242,7 +240,7 @@
           color: #60d39c;
 
           &::before {
-            background-image: url('../../../icons/green-arow-icon.svg');
+            background-image: url('/assests/icons/green-arow-icon.svg');
           }
         }
 
@@ -250,7 +248,7 @@
           color: #e35454;
 
           &::before {
-            background-image: url('../../../icons/red-arow-icon.svg');
+            background-image: url('/assests/icons/red-arow-icon.svg');
           }
         }
       }
