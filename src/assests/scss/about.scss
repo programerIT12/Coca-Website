@@ -1,0 +1,7 @@
+@use './base';
+@use './globals';
+
+// components
+@use './components/header';
+@use './components/about/hero.scss';
+@use './components/footer';

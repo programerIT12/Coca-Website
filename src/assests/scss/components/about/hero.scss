@@ -1,0 +1,38 @@
+@use '../../mixins' as *;
+
+.hero {
+  &__wrapper {
+    @include flex-justify-between;
+    margin-bottom: 132px;
+    gap: 30px;
+  }
+  &__title {
+    margin-top: 105px;
+    line-height: 120%;
+    letter-spacing: -0.04em;
+    color: var(--neutral-color-100);
+    max-width: 955px;
+    margin-bottom: 118px;
+  }
+
+  &__descr {
+    line-height: 131%;
+    letter-spacing: -0.03em;
+    color: var(--neutral-color-100);
+    max-width: 730px;
+  }
+
+  &__inner {
+    @include flex-all-centre;
+
+    &-link {
+      color: var(--neutral-color-100);
+      @include tablet {
+        display: none;
+      }
+      &-icon {
+        fill: currentColor;
+      }
+    }
+  }
+}
