@@ -1,0 +1,83 @@
+@use '../../mixins/' as *;
+
+.gallery {
+  overflow: hidden; // обрезаем ленту по краю экрана, а не по контейнеру
+
+  &__slider {
+    position: relative;
+
+    .swiper-wrapper {
+      align-items: flex-start;
+    }
+  }
+
+  // swiper/css подключается после наших стилей, поэтому усиливаем селекторы
+  &__slider.swiper {
+    overflow: visible; // слайды выходят за контейнер вправо, как на макете
+  }
+
+  &__slide.swiper-slide {
+    width: 502px;
+  }
+
+  &__slide {
+    width: 502px;
+
+    &--big {
+      height: 630px;
+    }
+
+    &:last-child {
+      width: 252px;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  &__btn {
+    @include flex-all-centre;
+    position: absolute;
+    top: 126px;
+    left: 518px; // 502px слайд + половина отступа 32px
+    z-index: var(--z-index-2);
+    border-radius: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background-color: #fff;
+
+    @include tablet {
+      display: none;
+    }
+    @include small-mobile {
+      top: 80px;
+      left: 93%;
+      display: flex;
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__img {
+    margin-bottom: 80px;
+  }
+
+  &__text {
+    margin-bottom: 32px;
+    font-weight: 500;
+    line-height: 178%;
+    color: var(--neutral-color-150);
+    max-width: 494px;
+  }
+
+  &__link {
+    padding: 16px 34px;
+    font-weight: 500;
+    line-height: 178%;
+    color: var(--neutral-color-150);
+  }
+}
