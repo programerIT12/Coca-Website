@@ -5,6 +5,16 @@
     @include flex-justify-between;
     margin-bottom: 132px;
     gap: 30px;
+
+    @include tablet {
+      margin-bottom: 100px;
+    }
+    @include small-tablet {
+      margin-bottom: 72px;
+    }
+    @include mobile {
+      margin-bottom: 56px;
+    }
   }
   &__title {
     margin-top: 105px;
@@ -13,6 +23,19 @@
     color: var(--neutral-color-100);
     max-width: 955px;
     margin-bottom: 118px;
+
+    @include tablet {
+      margin-top: 80px;
+      margin-bottom: 80px;
+    }
+    @include small-tablet {
+      margin-top: 56px;
+      margin-bottom: 56px;
+    }
+    @include mobile {
+      margin-top: 40px;
+      margin-bottom: 40px;
+    }
   }
 
   &__descr {

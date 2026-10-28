@@ -1,0 +1,208 @@
+@use '../../mixins/' as *;
+
+// БЭМ: блок .team, все элементы на одном уровне — .team__что-то.
+// Имя элемента по смыслу, а не по пути в DOM.
+.team {
+  overflow-x: clip; // свечение режется только по бокам
+  padding-bottom: 160px;
+
+  @include tablet {
+    padding-bottom: 120px;
+  }
+  @include small-tablet {
+    padding-bottom: 80px;
+  }
+
+  &__container {
+    position: relative;
+    isolation: isolate; // свечение под текстом, но над фоном
+
+    // светлый блик справа сверху (Ellipse 124 в макете)
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: -150px;
+      right: -156px;
+      width: 525px;
+      height: 525px;
+      border-radius: 50%;
+      background: var(--success-color-70);
+      filter: blur(180px);
+      pointer-events: none;
+
+      @include small-tablet {
+        top: -80px;
+        right: -120px;
+        width: 300px;
+        height: 300px;
+        filter: blur(120px);
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    max-width: 903px;
+    font-weight: 600;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    color: var(--neutral-color-100);
+  }
+
+  &__descr {
+    margin-bottom: 80px;
+    max-width: 534px;
+    font-weight: 500;
+    line-height: 178%;
+    color: #7e8492;
+
+    @include small-tablet {
+      margin-bottom: 48px;
+    }
+  }
+
+  &__slider {
+    margin-bottom: 100px;
+
+    @include small-tablet {
+      margin-bottom: 64px;
+    }
+  }
+
+  // карточка: 3 в ряд ровно по ширине контейнера (2 отступа по 32px),
+  // на планшете 2, на телефоне 1. Двойной класс — чтобы перебить swiper/css
+  &__slide.swiper-slide {
+    width: calc((100% - 64px) / 3);
+
+    @include tablet {
+      width: calc((100% - 32px) / 2);
+    }
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  // слайд с кнопкой поверх соседнего (кнопка заходит на него)
+  &__slide--with-btn.swiper-slide {
+    z-index: var(--z-index-2);
+  }
+
+  &__photo {
+    position: relative; // от него считается кнопка <>
+    margin-bottom: 16px;
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  // кнопка <>: по центру отступа между 1 и 2 карточкой (32px / 2 = 16px)
+  // и по центру высоты фото
+  &__btn {
+    @include flex-all-centre;
+    position: absolute;
+    top: 50%;
+    right: -16px;
+    z-index: var(--z-index-2);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #fff;
+    transform: translate(50%, -50%);
+    pointer-events: none; // не мешает тянуть слайдер
+
+    @include tablet {
+      width: 64px;
+      height: 64px;
+    }
+    @include mobile {
+      display: none;
+    }
+  }
+
+  // строка: имя слева, соцсети справа
+  &__info {
+    @include flex-all-between;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  &__name {
+    font-weight: 600;
+    line-height: 150%;
+    color: var(--neutral-color-100);
+  }
+
+  &__socials {
+    display: flex;
+    flex-shrink: 0;
+    gap: 8px;
+  }
+
+  // иконки берут цвет ссылки через fill="currentColor",
+  // фон кружка — тот же цвет на 10% (как в макете), работает в обеих темах
+  &__social {
+    @include flex-all-centre;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: var(--neutral-color-100);
+    background-color: color-mix(in srgb, currentColor 10%, transparent);
+    transition: opacity var(--transition);
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &__role {
+    font-weight: 500;
+    line-height: 150%;
+    color: #7e8492;
+  }
+
+  // Join our team: заголовок слева, текст и ссылка справа
+  &__join {
+    @include flex-justify-between;
+    gap: 30px;
+
+    @include tablet {
+      flex-direction: column;
+      gap: 24px;
+    }
+  }
+
+  &__join-title {
+    max-width: 626px;
+    font-weight: 600;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    color: var(--neutral-color-100);
+  }
+
+  &__join-content {
+    max-width: 506px;
+  }
+
+  &__join-text {
+    margin-bottom: 24px;
+    font-weight: 500;
+    line-height: 178%;
+    color: #7e8492;
+  }
+
+  &__join-link {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--neutral-color-100);
+    transition: opacity var(--transition);
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}

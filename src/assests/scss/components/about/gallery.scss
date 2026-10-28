@@ -1,7 +1,48 @@
 @use '../../mixins/' as *;
 
 .gallery {
-  overflow: hidden; // обрезаем ленту по краю экрана, а не по контейнеру
+  // clip, а не hidden: режет только по горизонтали,
+  // поэтому свечение может мягко уйти вниз на следующую секцию
+  overflow-x: clip;
+
+  &__container {
+    position: relative;
+    padding-bottom: 165px;
+    border-bottom: 1px solid var(--line-color);
+
+    @include small-tablet {
+      padding-bottom: 80px;
+    }
+
+    // Оранжевое свечение под первым слайдом (как в макете)
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: var(--z-index-0);
+      top: 365px;
+      left: -166px;
+      width: 551px;
+      height: 551px;
+      border-radius: 100%;
+      background: #fa7515;
+      opacity: 0.13;
+      filter: blur(220px);
+      pointer-events: none;
+
+      @include mini-desktop {
+        top: 465px;
+        left: -65px;
+        width: 351px;
+        height: 351px;
+      }
+      @include small-tablet {
+        top: 250px;
+        left: -80px;
+        width: 251px;
+        height: 251px;
+      }
+    }
+  }
 
   &__slider {
     position: relative;
@@ -13,24 +54,43 @@
 
   // swiper/css подключается после наших стилей, поэтому усиливаем селекторы
   &__slider.swiper {
-    overflow: visible; // слайды выходят за контейнер вправо, как на макете
+    // Видно максимум 3 слайда: слайдер тянется от левого края контейнера
+    // до правого края экрана, но не шире трёх слайдов из макета
+    // (502 + 32 + 502 + 32 + 252 = 1320px). Остальное скрыто и выезжает при свайпе.
+    width: min(1320px, calc(100% + (100vw - 100%) / 2));
+    overflow: hidden;
+
+    // на телефоне слайдер ровно по контейнеру — виден один слайд
+    @include mobile {
+      width: 100%;
+    }
   }
 
+  // Ширина слайда: 502px, но не больше 85% контейнера (на телефоне)
   &__slide.swiper-slide {
-    width: 502px;
+    width: min(502px, 85%);
+
+    @include mobile {
+      width: 100%;
+    }
+  }
+
+  // Узкий слайд задаём классом, а не :last-child,
+  // чтобы новые слайды не ломали ширины
+  &__slide--narrow.swiper-slide {
+    width: min(252px, 45%);
+
+    // на телефоне узкий слайд такой же, как остальные
+    @include mobile {
+      width: 100%;
+
+      img {
+        aspect-ratio: 502 / 629; // те же пропорции, что у первой картинки
+      }
+    }
   }
 
   &__slide {
-    width: 502px;
-
-    &--big {
-      height: 630px;
-    }
-
-    &:last-child {
-      width: 252px;
-    }
-
     img {
       display: block;
       width: 100%;
@@ -38,46 +98,60 @@
     }
   }
 
+  // Слайд с кнопкой поверх соседнего (кнопка заходит на него)
+  &__slide--with-btn.swiper-slide {
+    z-index: var(--z-index-2);
+  }
+
+  // Кнопка привязана к правому краю СВОЕГО слайда:
+  // центр кнопки = середина отступа между слайдами (32px / 2 = 16px)
   &__btn {
     @include flex-all-centre;
     position: absolute;
     top: 126px;
-    left: 518px; // 502px слайд + половина отступа 32px
+    right: -16px;
     z-index: var(--z-index-2);
     border-radius: 50%;
-    transform: translateX(-50%);
+    transform: translateX(50%);
     width: 80px;
     height: 80px;
     background-color: #fff;
+    pointer-events: none; // не мешает тянуть слайдер
 
     @include tablet {
-      display: none;
+      top: 100px;
+      width: 64px;
+      height: 64px;
     }
-    @include small-mobile {
-      top: 80px;
-      left: 93%;
-      display: flex;
-      width: 50px;
-      height: 50px;
+    @include mobile {
+      display: none;
     }
   }
 
   &__img {
     margin-bottom: 80px;
+
+    @include small-tablet {
+      margin-bottom: 32px;
+    }
   }
 
   &__text {
     margin-bottom: 32px;
     font-weight: 500;
     line-height: 178%;
-    color: var(--neutral-color-150);
-    max-width: 494px;
+    color: #7e8492; // серый в обеих темах, как в макете
+    max-width: 475px;
   }
 
   &__link {
+    display: inline-block;
+    border-radius: 100px;
     padding: 16px 34px;
     font-weight: 500;
     line-height: 178%;
-    color: var(--neutral-color-150);
+    // кнопка всегда тёмная с белым текстом (в тёмной теме не инвертируется)
+    color: #fff;
+    background-color: var(--black-bg-color);
   }
 }

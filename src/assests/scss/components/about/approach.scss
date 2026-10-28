@@ -1,0 +1,45 @@
+@use '../../mixins/' as *;
+
+// БЭМ: все элементы на одном уровне внутри блока .approach
+// (&__title внутри &__container дал бы .approach__container__title)
+.approach {
+  margin-bottom: 160px;
+
+  @include small-tablet {
+    margin-bottom: 100px;
+  }
+
+  &__container {
+    @include flex-all-between;
+    gap: 30px;
+    // только верх/низ, чтобы не перебить боковые отступы .container
+    padding-top: 80px;
+    padding-bottom: 85px;
+    border-bottom: 1px solid var(--line-color);
+
+    @include tablet {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    @include small-tablet {
+      padding-top: 60px;
+      padding-bottom: 60px;
+    }
+  }
+
+  &__title {
+    max-width: 480px;
+    font-weight: 600;
+    line-height: 120%;
+    letter-spacing: -0.04em;
+    color: var(--neutral-color-100);
+  }
+
+  &__descr {
+    max-width: 522px;
+    font-weight: 600;
+    line-height: 150%;
+    color: var(--neutral-color-100);
+  }
+}
