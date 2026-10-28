@@ -1,9 +1,8 @@
 @use '../../mixins/' as *;
 
-// БЭМ: блок .team, все элементы на одном уровне — .team__что-то.
-// Имя элемента по смыслу, а не по пути в DOM.
+
 .team {
-  overflow-x: clip; // свечение режется только по бокам
+  overflow-x: clip; 
   padding-bottom: 160px;
 
   @include tablet {
@@ -15,9 +14,9 @@
 
   &__container {
     position: relative;
-    isolation: isolate; // свечение под текстом, но над фоном
+    isolation: isolate;
 
-    // светлый блик справа сверху (Ellipse 124 в макете)
+
     &::before {
       content: '';
       position: absolute;
@@ -70,8 +69,7 @@
     }
   }
 
-  // карточка: 3 в ряд ровно по ширине контейнера (2 отступа по 32px),
-  // на планшете 2, на телефоне 1. Двойной класс — чтобы перебить swiper/css
+
   &__slide.swiper-slide {
     width: calc((100% - 64px) / 3);
 
@@ -83,13 +81,13 @@
     }
   }
 
-  // слайд с кнопкой поверх соседнего (кнопка заходит на него)
+
   &__slide--with-btn.swiper-slide {
     z-index: var(--z-index-2);
   }
 
   &__photo {
-    position: relative; // от него считается кнопка <>
+    position: relative;
     margin-bottom: 16px;
   }
 
@@ -99,8 +97,7 @@
     height: auto;
   }
 
-  // кнопка <>: по центру отступа между 1 и 2 карточкой (32px / 2 = 16px)
-  // и по центру высоты фото
+
   &__btn {
     @include flex-all-centre;
     position: absolute;
@@ -112,7 +109,7 @@
     border-radius: 50%;
     background-color: #fff;
     transform: translate(50%, -50%);
-    pointer-events: none; // не мешает тянуть слайдер
+    pointer-events: none;
 
     @include tablet {
       width: 64px;
@@ -123,7 +120,7 @@
     }
   }
 
-  // строка: имя слева, соцсети справа
+
   &__info {
     @include flex-all-between;
     gap: 16px;
@@ -142,8 +139,7 @@
     gap: 8px;
   }
 
-  // иконки берут цвет ссылки через fill="currentColor",
-  // фон кружка — тот же цвет на 10% (как в макете), работает в обеих темах
+
   &__social {
     @include flex-all-centre;
     width: 32px;
@@ -164,7 +160,7 @@
     color: #7e8492;
   }
 
-  // Join our team: заголовок слева, текст и ссылка справа
+
   &__join {
     @include flex-justify-between;
     gap: 30px;
