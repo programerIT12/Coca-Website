@@ -3,7 +3,7 @@ import 'swiper/css';
 
 export const useGallerySlider = () => {
   return new Swiper('.gallery__slider', {
-    slidesPerView: 'auto'
+    slidesPerView: 'auto',
 
     spaceBetween: 16,
     breakpoints: {
